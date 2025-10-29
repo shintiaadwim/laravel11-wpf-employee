@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('attendace', function (Blueprint $table) {
+        Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('karyawan_id');
+            $table->unsignedBigInteger('employee_id');
             $table->date('tanggal');
             $table->time('waktu_masuk')->nullable();
             $table->time('waktu_keluar')->nullable();
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Foreign key constraint
-            $table->foreign('karyawan_id')
+            $table->foreign('employee_id')
                 ->references('id')
                 ->on('employees')
                 ->onDelete('cascade');
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('attendace');
+        Schema::dropIfExists('attendances');
     }
 };
